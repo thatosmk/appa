@@ -1,15 +1,22 @@
 #!/bin/bash
 
 # start the script
-echo "Welcome to Bisen Appa\n"
+echo "Welcome to Bisen Appa\n\n Installing now..."
 
-# check if texfull-live and texlive are installed?? 
-# create a folder and copy makefiles and all files for latex
-mkdir $1 && cd $1
+# check if latex is installed
+installed=`which latex`
 
-# create a latex file with the template from src folder
+# if no latex has been installed
+if [ ! -n "$installed"]; then
 
-# create a git repo
-git init && git add * && git commit -am "added project files"
+		#install texfull-live
+		sudo apt-get install texlive-full
+fi
 
+# move template to /etc/appa folder
+sudo mkdir /etc/appa/
+sudo cp main.tex Makefile /etc/appa/
 
+# copy appa script into /usr/local/bin
+mv appa.sh appa
+sudo cp appa /usr/local/bin
