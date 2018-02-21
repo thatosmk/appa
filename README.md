@@ -1,10 +1,17 @@
-# Appar
+# Appa
 
 Writing documents made easy.
 
 ## What is it good for
 Everytime you start a tex document, this helps you to generate templates for you and also
 creates a git repo for your document versions when you come back to edit.
+## Installation
+Run
+
+` git clone https://github.com/thatosmk/sluggish-bison.git `
+
+Then `cd` into the folder and run `./install` script.
+
 
 ## How it works
 `appa create`
