@@ -12,8 +12,8 @@ creates a git repo for your document versions when you come back to edit.
 
 
 `appa open`
-> opens an existing tex document in a new branch and merges on completion of editing the
-> document
+> opens an existing tex document in a new branch(```staging```) and merges on completion of editing the
+> document. Also open a pdf and latexmk for easy editing and viewing.
 
 ## Contribution
 Clone and create a pull request
