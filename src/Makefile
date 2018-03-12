@@ -34,3 +34,4 @@ main.pdf:
 
 clean:
 	latexmk -CA
+	rm -rf *.log *.aux *.out *.fls *.toc 
