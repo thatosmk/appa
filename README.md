@@ -14,11 +14,13 @@ Then `cd` into the folder and run `./install` script.
 
 
 ## How it works
-`appa create`
-> creates a new tex document and opens latexmk on a new terminal. 
+At the moment there are two templates, one for *engineering/scientific* journals and a *blank* document
+
+`appa create [science/blank] [project_name]`
+> creates a new directory with `project name` and with the specified template, opens latexmk on a new terminal and opens vi with the Tex file for the document. 
 
 
-`appa open`
+`appa open [main.tex]`
 > opens an existing tex document in a new branch(```staging```) and merges on completion of editing the
 > document. Also open a pdf and latexmk for easy editing and viewing.
 

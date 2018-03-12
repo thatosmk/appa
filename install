@@ -26,9 +26,12 @@ echo 'latex has been installed'
 # move template to /etc/appa folder
 echo 'making a folder in /etc/'
 sudo mkdir /etc/appa/
+sudo mkdir /etc/appa/science
+sudo mkdir /etc/appa/blank
 
 echo 'copying source files into /etc/appa'
-sudo cp src/main.tex src/Makefile /etc/appa/
+sudo cp -r src/blank/* src/Makefile /etc/appa/blank/
+sudo cp -r src/science/* src/Makefile /etc/appa/science/
 
 # copy appa script into /usr/local/bin
 echo 'copying appa to /usr/bin'
