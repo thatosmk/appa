@@ -1,48 +1,56 @@
 #!/bin/bash
 
+# author: Thato Semoko
+# email: thatosmk@gmail.com
+
 # options are either 'new' or 'open'
 if [ $1 == "new" ]; then 
 
 	# create a new directory and cd into it
-	mkdir $2 && cd $2
+	mkdir $3 && cd $3
 
-	# create a git repo
-	git init 
+	if [ $2 == "blank" ]; then 
+		# copy in a template(main.tex and makefile)
+		cp ~/.appa/src/blank/* .
 
-	# copy in a template
-	sudo cp /etc/appa/main.tex .
+	elif [ $2 == "science" ]; then 
+		# copy in a template(main.tex and makefile)
+		cp ~/appa/src/science/* .
+
+	fi
+
+	# must also indicate whether the required document is a lab 
+	# report or just a document like for minutes or something.
+	# for reports follow the IMDRC scheme in a tex/intro.tex, 
+	# tex/method.tex ... and include that in a main.tex
 
 	# run make for the pdf file 
-	pdflatex main.tex
-
+	make
+	# also clean up before adding to the repo
 	# add and make your initial commit
- 	git add * && git commit -am "added project files"
+	make clean
 
+    # open the pdf file
+    xdg-open *.pdf 
+
+    # run the latexmk in a new terminal  
+    gnome-terminal -x sh -c "latexmk -pvc -pdf $2; zsh"
+
+    # open vi with the tex file
+    vi $3
 
 elif [ $1 == "open" ]; then 
 
-	# check if a git repo exists
-	if [ -d .git ]; then 
+    # compile
+    make
+    # open the pdf file
+    xdg-open *.pdf 
 
-			# check if the staging branch exists
-			exists=`git show-ref refs/heads/staging`
+    # run the latexmk in a new terminal  
+    gnome-terminal -x sh -c "latexmk -pvc -pdf $2; zsh"
 
-			if [ -n "$exists" ]; then
-					# checkout into a new branch and open a file
-					git checkout -b staging 
-			else
-					git checkout staging 
-			fi
-	fi
+    # open vi with the tex file
+    vi $2
 
 fi
-
-# open the pdf file
-xdg-open main.pdf 
-
-# run the latexmk in a new terminal  
-gnome-terminal -x sh -c "latexmk -pvc -pdf main.tex; zsh"
-
-# open vi with the tex file
-vi main.tex
 
