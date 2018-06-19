@@ -6,18 +6,20 @@
 # options are either 'new' or 'open'
 if [ $1 == "new" ]; then 
 
-	# create a new directory and cd into it
-	mkdir $3 && cd $3
+	# create a new directory
+	mkdir $3
 
 	if [ $2 == "blank" ]; then 
 		# copy in a template(main.tex and makefile)
-		cp ~/.appa/src/blank/* .
+		cp ~/.appa/src/blank/* $3
 
 	elif [ $2 == "science" ]; then 
 		# copy in a template(main.tex and makefile)
-		cp ~/appa/src/science/* .
+		cp ~/appa/src/science/* $3
 
 	fi
+
+    cd $3
 
 	# must also indicate whether the required document is a lab 
 	# report or just a document like for minutes or something.
@@ -26,23 +28,23 @@ if [ $1 == "new" ]; then
 
 	# run make for the pdf file 
 	make
-	# also clean up before adding to the repo
-	# add and make your initial commit
+    # clean the build
 	make clean
 
     # open the pdf file
     xdg-open *.pdf 
 
     # run the latexmk in a new terminal  
-    gnome-terminal -x sh -c "latexmk -pvc -pdf $2; zsh"
+    gnome-terminal -x sh -c "latexmk -pvc -pdf main.tex; zsh"
 
     # open vi with the tex file
-    vi $3
+    vi main.tex
 
 elif [ $1 == "open" ]; then 
 
     # compile
-    make
+    make && make clean
+
     # open the pdf file
     xdg-open *.pdf 
 
