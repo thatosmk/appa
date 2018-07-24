@@ -1,0 +1,41 @@
+% this is a tex template for a presentation slide with Beamer
+\documentclass[11pt, pdf]{beamer}
+\mode<Presentation>{}
+\title{First PowerPoint}
+\begin{document}
+    % use frames to add a new slide
+        % title frame
+        \begin{frame}
+            \titlepage
+        \end{frame}
+
+    \section{Introduction to Slides}
+        % first slide frame
+        \begin{frame}{The First Slide}
+           Beamer is great
+           \pause
+           \begin{itemize}
+               \item First
+               \pause
+               \item Second
+           \end{itemize}
+        \end{frame}
+    \section{colors}
+        \begin{frame}{Last frame}
+           \begin{itemize}
+               \item<2-4> Hi,
+               \item<3-3> Hello,
+               \item<4-> \color<6>[rgb]{0,0.6,0} Siyawubona,
+           \end{itemize}
+        \end{frame}
+
+    \section{freaky stuff}
+        \begin{frame}{The Freaky Slide}
+            \newtheorem{thm}{Easy Theorem}
+
+            \begin{thm}<1->
+                How many integers can you think of in 10 seconds
+            \end{thm}
+        \end{frame}
+
+\end{document}

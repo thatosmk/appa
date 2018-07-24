@@ -15,8 +15,12 @@ if [ $1 == "new" ]; then
 
 	elif [ $2 == "science" ]; then 
 		# copy in a template(main.tex and makefile)
-		cp ~/appa/src/science/* $3
+		cp ~/.appa/src/science/* $3
 
+    # include slides functionality with Beamer
+    elif [ $s2 == "slides" ]; then
+       # copy slides templates
+       cp ~/.appa/src/slides/* $3
 	fi
 
     cd $3
