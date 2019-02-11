@@ -10,30 +10,28 @@ if [ $1 == "new" ]; then
 	mkdir $3
 
 	if [ $2 == "blank" ]; then 
-		# copy in a template(main.tex and makefile)
+		# copy in a template(main.tex and makefile) - blank document
 		cp ~/.appa/src/blank/* $3
+        cp ~/.appa/src/macros/* $3
 
 	elif [ $2 == "science" ]; then 
-		# copy in a template(main.tex and makefile)
+		# copy in a template(main.tex and makefile) - technical paper
 		cp ~/.appa/src/science/* $3
+        cp ~/.appa/src/macros/* $3
 
     # include slides functionality with Beamer
-    elif [ $s2 == "slides" ]; then
-       # copy slides templates
-       cp ~/.appa/src/slides/* $3
+    elif [ $2 == "prezi" ]; then
+       # copy slides templates - slides
+       cp ~/.appa/src/prezi/* $3
+       cp ~/.appa/src/macros/* $3
 	fi
 
     cd $3
-
-	# must also indicate whether the required document is a lab 
-	# report or just a document like for minutes or something.
-	# for reports follow the IMDRC scheme in a tex/intro.tex, 
-	# tex/method.tex ... and include that in a main.tex
+    
 
 	# run make for the pdf file 
 	make
     # clean the build
-	make clean
 
     # open the pdf file
     xdg-open *.pdf 
@@ -42,12 +40,12 @@ if [ $1 == "new" ]; then
     gnome-terminal -x sh -c "latexmk -pvc -pdf main.tex; zsh"
 
     # open vi with the tex file
-    vi main.tex
+    gnome-terminal -x sh -c "vi main.tex; zsh"
 
 elif [ $1 == "open" ]; then 
 
     # compile
-    make && make clean
+    make clean && make
 
     # open the pdf file
     xdg-open *.pdf 
@@ -56,7 +54,7 @@ elif [ $1 == "open" ]; then
     gnome-terminal -x sh -c "latexmk -pvc -pdf $2; zsh"
 
     # open vi with the tex file
-    vi $2
+    gnome-terminal -x sh -c "vi $2; zsh"
 
 fi
 
