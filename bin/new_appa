@@ -1,0 +1,42 @@
+#!/usr/bin/python3
+
+from argparse import  ArgumentParser
+
+import os
+
+parser = ArgumentParser(description="Write latex easily with Vim and Latexmk.")
+
+parser.add_argument('--template', '-T', help="Template for which to begin this document with.", default="blank")
+
+parser.add_argument('--dir', '-d', help="Directory for which to keep the build files", required=False)
+
+parser.add_argument('--output', '-o', help="Filename of the latex file", required=True)
+
+args = parser.parse_args()
+
+def run():
+    # find out if the directory already exists
+    try:
+        os.system("touch %s"%(args.output))
+        
+        #case(args.template):
+
+        # template the latex file and copy the make files
+        os.system("echo ~/.appa/src/blank/main.tex >> %s"%(args.output))
+        if args.dir != None:
+            os.system("cp ~/.appa/src/blank/makefile %s" (args.dir))
+        else:
+            os.system("cp ~/.appa/src/blank/makefile . ")
+
+        # open the latex file and run latexmk on a separate window
+        os.system("make")
+
+    except FileExistsError:
+        # then open the .tex file 
+        print("File already exists.")
+
+
+
+if __name__ == "__main__":
+
+    run()
