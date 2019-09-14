@@ -7,23 +7,24 @@
 if [ $1 == "new" ]; then 
 
 	# create a new directory
-	mkdir $3
+    # -p flag is important for the exception handling
+	mkdir -p $3
 
 	if [ $2 == "blank" ]; then 
 		# copy in a template(main.tex and makefile) - blank document
-		cp ~/.appa/src/blank/* $3
-        cp ~/.appa/src/macros/* $3
+		cp -r ~/.appa/src/blank $3
+        cp -r ~/.appa/src/macros $3
 
 	elif [ $2 == "science" ]; then 
 		# copy in a template(main.tex and makefile) - technical paper
-		cp ~/.appa/src/science/* $3
-        cp ~/.appa/src/macros/* $3
+		cp -r  ~/.appa/src/science $3
+        cp -r  ~/.appa/src/macros $3
 
     # include slides functionality with Beamer
     elif [ $2 == "prezi" ]; then
        # copy slides templates - slides
-       cp ~/.appa/src/prezi/* $3
-       cp ~/.appa/src/macros/* $3
+       cp -r  ~/.appa/src/prezi $3
+       cp -r  ~/.appa/src/macros $3
 	fi
 
     cd $3
