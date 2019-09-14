@@ -29,11 +29,11 @@ fi
 
 # move template to /etc/appa folder
 echo 'making a folder in ~/.appa/'
-mkdir ~/.appa
-mkdir ~/.appa/src/
-mkdir ~/.appa/src/science
-mkdir ~/.appa/src/blank
-mkdir ~/.appa/src/prezi
+mkdir -p ~/.appa
+mkdir -p ~/.appa/src/
+mkdir -p ~/.appa/src/science
+mkdir -p ~/.appa/src/blank
+mkdir -p ~/.appa/src/prezi
 
 echo 'copying source files into /etc/appa'
 cp -r src/blank/* src/Makefile ~/.appa/src/blank/
