@@ -1,0 +1,509 @@
+%\documentclass{beamer}
+\documentclass[10pt]{beamer}
+% This file is a solution template for:
+
+% - Talk at a conference/colloquium.
+% - Talk length is about 20min.
+% - Style is ornate.
+
+% Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
+%
+% In principle, this file can be redistributed and/or modified under
+% the terms of the GNU Public License, version 2.
+%
+% However, this file is supposed to be a template to be modified
+% for your own needs. For this reason, if you use this file as a
+% template and not specifically distribute it as part of a another
+% package/program, I grant the extra permission to freely copy and
+% modify this file as you see fit and even to delete this copyright
+% notice.
+
+% See spinmodel_gamgconfig_LSE.m, spinmodel_gamgconfig_JSE.m, spinmodel_gamgconfig_JSELSE.m
+% for the figures.
+%
+
+\mode<presentation>
+{
+% \usetheme{default}
+ \usetheme{Warsaw}
+% \usetheme{Rochester}
+%\usetheme{Madrid}
+%\usetheme{Pittsburgh}
+%\usetheme{Antibes}
+%\usetheme{Montpellier}
+%\usetheme{Berkeley}
+%\usetheme{PaloAlto}
+%\usetheme{Goettingen}
+%\usetheme{Marburg}
+%\usetheme{Hannover}
+%\usetheme{Berlin}
+%\usetheme{Ilmenau}
+%\usetheme{Dresden}
+%\usetheme{Darmstadt}
+%\usetheme{Frankfurt}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Copenhagen}
+%\usetheme{Malmoe}
+% or ...
+
+%\usecolortheme[named=SeaGreen]{structure})
+\usecolortheme{crane}
+\usepackage[demo]{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+%\usecolortheme[named=SeaGreen]{structure}).
+\setbeamercovered{transparent}
+%or whatever (possibly just delete it)
+%\setbeamercolor{frametitle}{fg=blue,bg=cyan}
+}
+% Predefined colors: red, green, blue, cyan, magenta, yellow, black,
+% darkgray, gray, lightgray, orange, violet, purple, and brown
+% albatross, beetle, crane, dove, fly, seagull
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+
+\usepackage{graphicx}
+\usepackage{multimedia}
+
+
+
+
+
+\newcommand{\bc}{\begin{center}}
+\newcommand{\ec}{\end{center}}
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\beq}{\begin{eqnarray*}}
+\newcommand{\eeq}{\end{eqnarray*}}
+
+
+\begin{document}
+
+\title[Poverty analysis]{Poverty analysis for Kiva}
+%\title[Market microstructure and high frequency models]{Market microstructure and high frequency models}
+
+\author[A. Gumede, F. Iguhaye, University of Cape Town] % (optional, use only with lots of authors)
+{Amukelwa Gumede\\Flavien Iguhaye \\ University of Cape Town} % \\
+
+% - Give the names in the same order as the appear in the paper.
+% - Use the \inst{?} command only if the authors have different
+%   affiliation.
+
+ \institute[University of Cape Town] % (optional, but mostly needed)
+ {Project Presentation to STA Honours}
+ % University of Elsewhere}
+ % - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+
+%\date[July 2013] % (optional, should be abbreviation of conference name)
+% - Either use conference name or its abbreviation.
+% - Not really informative to the audience, more for people (including
+%   yourself) who are reading the slides online
+
+\subject{}
+% This is only inserted into the PDF information catalog. Can be left
+% out.
+
+% If you have a file called "university-logo-filename.xxx", where xxx
+% is a graphic format that can be processed by latex or pdflatex,
+% resp., then you can add a logo as follows:
+
+ \pgfdeclareimage[height=1cm]{university-logo}{UCT-logo}
+ %\pgfdeclareimage[height=0.5cm]{corporate-logo}{QTLogo.jpg}
+ \logo{\pgfuseimage{university-logo}}
+ %\pgfuseimage{corporate-logo}}
+
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each subsection:
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+%\beamerdefaultoverlayspecification{<+->}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+  \tableofcontents
+  % You might wish to add the option [pausesections]
+\end{frame}
+
+
+\section{Introduction}
+\begin{frame}{Abstract }
+
+We investigate the relationship between the loans issued by Kiva and the poverty levels of the recipients by using  the Kiva loans data sets and external data sets to build models to estimate the poverty levels of residents in only the African continent regions where Kiva has active loans.
+
+
+\end{frame}
+
+\begin{frame}{Acknowledgements}
+
+We give special thanks to the Kaggle competition it's participants, Kiva organisation and the Demographic and Health Survey conducted by the United States Agency of International Development.
+
+\scriptsize
+
+
+\vspace{1cm}
+Team members for this research are: Amukelwa Gumede, Flavien Iguhaye and Sebnem Er(supervisor).
+
+
+
+
+\end{frame}
+
+%\begin{frame}{}
+
+%\begin{figure}
+%    \centering
+%    \includegraphics[width=7cm]{....jpg}
+%    \caption{PROVIDE A DESCRIPTIVE CAPTION AND DON'T FORGET TO LABEL YOUR AXE PROPERLY }
+%
+%\end{figure}
+
+\begin{frame}{Introduction: The Kiva organisation}
+To put this project into proper context we first have to discuss the aims and missions of the Kiva organisation. 
+
+\begin{figure}
+    \centering
+    \includegraphics[height=4cm, width=5cm]{category.JPG}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{Introduction: The Kiva organisation}
+Kiva is an international nonprofit with a mission to expand financial access to help under-served communities thrive. They do this by crowdfunding loans and unlocking capital for the under-served, improving the quality and cost of financial services, and addressing the underlying barriers to financial access around the world. Through Kiva's work, students can pay for tuition, women can start businesses, farmers are able to invest in equipment and families can afford needed emergency care. Kiva's mission is to create a financially inclusive world where all people hold the power to improve their lives. More than 1.7 billion people around the world are un-banked and cannot access the financial services they need. 
+
+\end{frame}
+
+\begin{frame}{Kiva loan's exploratory data analysis}
+Impact of Kiva's work:
+\begin{itemize}
+    \item \$1.3 Billion  in funded loans worldwide.
+    \item 1.8 Million lenders.
+    \item 3.2 Million borrowers.
+    \item 96.8\% repayment rate.
+\end{itemize}
+\begin{figure}
+    \centering
+    \includegraphics[height = 3cm,width = 6cm]{kivamap.JPG}
+\end{figure}
+\end{frame}
+
+\section{Exploratory Data Analysis}
+\begin{frame}{EDA: Loans data }
+    \begin{figure}
+        \centering
+        \includegraphics[width=10cm,height=8cm]{EDA/loans2.png}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{EDA: Loan split between countries.}
+    
+\begin{figure}
+\centering
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[width=4cm,height=4cm]{EDA/numBorrowes.png}
+  \captionof{figure}{Number of loans per country.}
+  \label{fig:test1}
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[width=4cm,height=4cm]{EDA/loanAmntPerCntry.png}
+  \captionof{figure}{Total loan amount per country}
+  \label{fig:test2}
+\end{minipage}
+\end{figure}
+\end{frame}
+
+\begin{frame}{EDA: Loan split between sector and gender.}
+\begin{figure}
+\centering
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[width=4cm,height=4cm]{EDA/numSector.png}
+  \captionof{figure}{Number of loans per sector.}
+  \label{fig:test1}
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[width=4cm,height=4cm]{EDA/gender.png}
+  \captionof{figure}{Number of loans per gender.}
+  \label{fig:test2}
+\end{minipage}
+\end{figure}
+\end{frame}
+
+\begin{frame}{EDA: Median funded amounts by country vs waiting time}
+        \begin{figure}
+        \centering
+        \includegraphics[width=8cm,height=4cm]{EDA/Med_Amount_Waiting.png}
+    \end{figure}
+\end{frame}
+
+
+\begin{frame}{Exploratory Data Analysis: Kiva Loans data overview}
+        \begin{figure}
+        \centering
+        \includegraphics[width=6cm,height=6cm]{EDA/repayment.png}
+    \end{figure}
+    \end{frame}  
+    
+\begin{frame}{EDA: Loan amount & percentage loans funded VS regional MPI}
+\begin{figure}
+\centering
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[width=6cm,height=6cm]{EDA/loanAmountMPI.png}
+  \captionof{figure}{Number of loans per sector.}
+  \label{fig:test1}
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[width=6cm,height=6cm]{EDA/percentFunded.png}
+  \captionof{figure}{Number of loans per gender.}
+  \label{fig:test2}
+\end{minipage}
+\end{figure}
+\end{frame}
+
+
+
+\begin{frame}{Introduction: Poverty Measurements}
+"Poverty is as complex and varied as the persons who experience it. Multidimensional poverty measures can be used to create a more comprehensive picture of the deprivations poor people experience."
+
+\begin{itemize}
+    \item Multidensional Poverty Index \\
+    \item US \$1.90 a day (World Bank)\\
+    \item National Poverty Line \\
+ 
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Introduction: Multidimensional Poverty Index}
+\begin{itemize}
+    \item The Multidimensional Poverty Index developed by Oxford Poverty Human Initiative's Sabina Alkire and James Foster was used as a metric for measuring poverty.
+    \item "Using a set of dimensions and indicators, the AF method provides information about not only the number or percentage of people living in multidimensional poverty but also the number of deprivations the poor face (intensity). In addition, the AF method allows policymakers to discern the dimensions and indicators that contribute the most to poverty."
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Introduction: Multidimensional Poverty Index}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=8cm,height=3cm]{Dimensionspov.JPG}
+\end{figure}
+\begin{itemize}
+    \item Multidimensionally poor: \textbf{MPI} \ge 0.33 \\
+    \item Severely Multidimensionally poor: \textbf{MPI} \ge 0.5 \\
+    \item Near Multidimensionally poor : 0.2 \le \textbf{MPI} \le 0.33 \\
+    \item Not Multidimensionally poor: 0 \le \textbf{MPI} \le 0.2. \\
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Kenya: MPI analysis}
+\begin{figure}
+    \centering
+    \includegraphics[height=5cm,width=8cm]{EDA/KenyaMPI.png}
+    \caption{\textbf{Mapping the MPI at sub-national level.}}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Kenya: Pecentage poor by indicator}
+   \begin{figure}
+    \centering
+    \includegraphics[height=5cm,width=11cm]{EDA/IndicatorPerc.png}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Kenya: Pecentage contribution by indicator}
+   \begin{figure}
+    \centering
+    \includegraphics[height=5cm,width=11cm]{EDA/contribution.png}
+    \caption{Contribution of Each Indicator to Overall Poverty at the National Level, for Urban Areas, and for Rural Areas}
+\end{figure}
+\end{frame} 
+
+\begin{frame}{Kenya: Poverty Measures}
+   \begin{figure}
+    \centering
+    \includegraphics[height=5cm,width=11cm]{EDA/summary.png}
+    \caption{Summary of Poverty Measures}
+\end{figure}
+\end{frame}
+
+\section{Demographic and Health Surveys and constructing the MPI}
+\begin{frame}{DHS data set: Health}
+ \begin{figure}
+    \centering
+    \includegraphics[height=5cm,width=11cm]{EDA/image-2.png}
+    \caption{Kenya DHS data: 36430 households, 2362 variables}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{DHS data set:: Education}
+    Education
+\begin{itemize}
+    \item HV108 ## Education in single years 
+    \item  HV110 Whether the household member is still in school 
+    \item  HV121 ## Household member attended school during current school year.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{DHS data set:: Standard of living}
+    Standard of Living
+\begin{itemize}
+    
+  \item   HV206 ## Electricity
+ \item  HV201, HV204 ## Drinking water
+ \item  HV205, HV225 ## Sanitation
+\item   HV226 ## Cooking fuel
+ \item  HV213 ## Floor
+\end{itemize}
+\end{frame}
+
+  \begin{frame}{DHS data set:: Health}
+      Health
+\begin{itemize}
+    \item V206  Total number of sons who have died (children)
+\item V207  Total number of daughters who have died  (children)
+\item b7  Age at death of the child in completed months g (children)
+\item HA1 Women's age in years. 
+\item  HC31 : Child's year of birth 
+\item HC70 Ht/A Standard deviations (according to WHO) 
+\item HC73 BMI standard deviations (according to WHO) 
+\item  HA40 Body mass index for respondent.  
+
+\end{itemize}
+
+  \end{frame}
+\begin{frame}{Other deprivations:: Assets}
+\begin{itemize}
+     \item   HV207 Radio
+    \item   HV208  Television
+     \item   HV243A  Mobile telephone
+    \item   HV221  Telephone (non mobile)
+     
+          \item  HV210 Bicycle
+     \item  HV211 Motorcycle or Scooter
+    \item   HV212 Car or Truck
+     \item   HV243C : Animal drawn cart
+     \item   HV243D : Boat with a motor
+     
+     \item   HV209  Refrigerator
+     \item  HV244 : Own land usable for agriculture
+     \item   HV245 : Hectares for agricultural land
+     \item   HV246 : Livestock, herds or farm animals
+
+ \item HV009 : Total members in household
+\item HV247 : Any member of the household has a bank account
+
+
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}{Final DHS Data}
+\begin{figure}
+    \centering
+    \includegraphics[height=5cm,width=11cm]{EDA/image-4.png}
+    \caption{MPI deprivations and indicators}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{Mapping the loans data}
+\begin{figure}
+    \centering
+    \includegraphics[height=5cm,width=11cm]{EDA/mapLoans.png}
+    \caption{MPI at sub-national region, 47 counties}
+\end{figure}
+
+\end{frame}
+
+\section{Extending MPI by a financial dimension}
+\begin{frame}{Extending MPI to a financial dimension}
+Kiva provides financial assistance and should have as part of any index used, a financial component, as here is where they can most directly help. The only financial attribute within the MPI is the HV249 variable which measures whether a member of the household has a bank account.
+\begin{itemize}
+    \item Financial Inclusion Insights Surveys by InterMedia, which currently offers detailed data for 12 developing countries. The countries in Africa are Kenya, Nigeria, Uganda and Tanzania.
+    \item By adding the 4th dimension we would have to re-weight each component by 1/4.
+\end{itemize}
+
+    
+\end{frame}
+\section{Results and further work}
+
+\begin{frame}{Methods to use: work in progress}
+    \begin{itemize}
+        \item Geographical Weighted Regression: GWR, instead of one global coefficient for each variable, coefficients are able to vary according to space. This spatial variation in coefficients can reveal interesting patterns which otherwise would be masked.
+        \item Decision tree model with lon-lat, MPI, activity/sector, gender to determine what the factors affecting loan amounts are. 
+    \end{itemize}
+\end{frame}
+
+
+\section{Summary}
+\begin{frame}{In summary: Impact of this project}
+\begin{itemize}
+    \item Help Kiva better approximate poverty levels & risk of lending to African countries.
+    \item Allocate loans more efficiently on a poverty basis.
+     
+     \item Help external organizations better channel aid and humanitarian relief programs, e.g. UN, World Bank.
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}{Learning outcomes}
+\begin{itemize}
+    \item Finding data, from multiple source
+    \item Data preparation 
+    \item Working with geographical data
+    \item Poverty levels in Africa
+     
+     \item Help external organizations better channel aid and humanitarian relief programs, e.g. UN, World Bank.
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+
+\vspace{1.5cm}
+\begin{center}
+Thank you for your attention. Comments and \underline {constructive} feedback :)
+\end{center}
+
+\end{frame}
+
+
+
+
+
+
+\end{document}
+
+
+

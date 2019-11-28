@@ -38,6 +38,7 @@ mkdir -p ~/.appa/src/prezi
 echo 'copying source files into /etc/appa'
 cp -r src/blank/* src/Makefile ~/.appa/src/blank/
 cp -r src/science/* src/Makefile ~/.appa/src/science/
+cp -r src/prezi/* src/Makefile ~/.appa/src/prezi/
 
 # copy appa script into /usr/local/bin
 echo 'copying appa to /usr/local/bin'

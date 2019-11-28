@@ -31,6 +31,9 @@ blog and a *presentation* template with default slide styles.
 `appa open [filename]`
 > opens an existing tex document in `vi`, open a pdf and runs an instance of `latexmk` for easy editing and viewing.
 
+## Compile and view pdf
+> run ```make``` and it will generate a pdf of your work. view it using a pdf viewer.
+
 ## Contribution
 Clone and create a pull request
 
