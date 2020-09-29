@@ -1,61 +1,49 @@
-#!/bin/bash
+#!/usr/bin/env ruby
+require "thor"
 
-# author: Thato Semoko
-# email: thatosmk@gmail.com
+class Appa < Thor
+  include Thor::Actions
 
-# options are either 'new' or 'open'
-if [ $1 == "new" ]; then 
+  desc "new TEMPLATE", "a new Latex document"
+  method_option :name, aliases: "-name", required: true, desc: "name of the new document"
+  def new(template)
+    dest_folder = "#{options[:name]}"
+    dest_folder.empty? ? dest_folder : "untitled_document" # TODO: fix the permission denied error
+    case template
+      when "blank"
+        puts "using a #{template} template"
+      when "science"
+        puts "using a #{template} template"
+      when "presentation"
+        puts "using a #{template} template"
+      when "invoice"
+        puts "using a #{template} template"
+      else
+        puts "no template specified"
+    end
+    render_templates(template, dest_folder)
+  end
 
-	# create a new directory
-    # -p flag is important for the exception handling
-	mkdir -p $3
+  desc "Open a Latex pdf document with latexmk and a .tex file", "opens a tex file with latexmk and document viewer"
+  def open(file)
+    # TODO: check if the file exists in current dir or further down the tree
+    unless File.exist?("#{file}")
+      puts "file not found"
+      exit
+    end
+    # open the pdf, open with document viewer and then open in vim
+    %x( xdg-open "#{file.split(".").first}.pdf" ; gnome-terminal -x sh -c "latexmk -pvc -pdf #{file}; zsh" ; gnome-terminal -x sh -c "vi #{file}; zsh"  )
+  end
 
-	if [ $2 == "blank" ]; then 
-		# copy in a template(main.tex and makefile) - blank document
-		cp -r ~/.appa/src/blank $3
-        cp -r ~/.appa/src/macros $3
+  desc "Provides templates", "generates templates for new documents"
+  def render_templates(folder, dest_folder)
+    directory "../src/#{folder}", "#{dest_folder}"
+    copy_file "../src/Makefile",  "#{dest_folder}/Makefile"
+  end
 
-	elif [ $2 == "science" ]; then 
-		# copy in a template(main.tex and makefile) - technical paper
-		cp -r  ~/.appa/src/science $3
-        cp -r  ~/.appa/src/macros $3
+  def self.source_root
+    File.dirname(__FILE__)
+  end
+end
 
-    # include slides functionality with Beamer
-    elif [ $2 == "prezi" ]; then
-       # copy slides templates - slides
-       cp -r  ~/.appa/src/prezi $3
-       cp -r  ~/.appa/src/macros $3
-	fi
-
-    cd $3
-    
-
-	# run make for the pdf file 
-	make
-    # clean the build
-
-    # open the pdf file
-    xdg-open *.pdf 
-
-    # run the latexmk in a new terminal  
-    gnome-terminal -x sh -c "latexmk -pvc -pdf main.tex; zsh"
-
-    # open vi with the tex file
-    gnome-terminal -x sh -c "vi main.tex; zsh"
-
-elif [ $1 == "open" ]; then 
-
-    # compile
-    make clean && make
-
-    # open the pdf file
-    xdg-open *.pdf 
-
-    # run the latexmk in a new terminal  
-    gnome-terminal -x sh -c "latexmk -pvc -pdf $2; zsh"
-
-    # open vi with the tex file
-    gnome-terminal -x sh -c "vi $2; zsh"
-
-fi
-
+Appa.start(ARGV)

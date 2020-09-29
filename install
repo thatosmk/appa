@@ -6,7 +6,7 @@ installed=`which latex`
 # ask user if to install latex if not installed
 if [ ! -n "$installed" ]; then
 
-    #install texfull-live
+    # install texfull-live
     echo '............latex not installed, install latex?'
     select yn in "Y" "n"; do 
         case $yn  in 
@@ -17,26 +17,13 @@ if [ ! -n "$installed" ]; then
 fi
 
 echo '...........latex has been installed'
-echo '...........checking git'
-
-# also check if git has been installed
-if [ ! -f /usr/bin/git ]; then
-	
-		# install git
-    echo '...........installing git'
-    sudo apt-get install git
-fi
 
 # move template to /etc/appa folder
 echo 'making a folder in ~/.appa/'
 mkdir -p ~/.appa
-mkdir -p ~/.appa/src/
-mkdir -p ~/.appa/src/science
-mkdir -p ~/.appa/src/blank
-mkdir -p ~/.appa/src/prezi
 
 echo 'copying source files into /etc/appa'
-cp -r src/blank/* src/Makefile ~/.appa/src/blank/
+cp -r src/* src/Makefile ~/.appa/src/blank/
 cp -r src/science/* src/Makefile ~/.appa/src/science/
 cp -r src/prezi/* src/Makefile ~/.appa/src/prezi/
 
