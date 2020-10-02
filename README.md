@@ -6,15 +6,18 @@ easy to write books, letters, reports, presentations or conference posters by si
 
 ## Dependencies
 
-> `texlive-full`
+* [texlive-full](https://www.tug.org/texlive/)
 
 ## Installation
+
 Run
 
-` git clone https://github.com/thatosmk/sluggish-bison.git `
-
-Then `cd` into the folder and run `./install` script.
-
+```bash
+    $ git clone https://github.com/thatosmk/appa.git 
+    $ cd appa/
+    $ chmod +x install
+    $ ./install
+```
 
 ### How it works
 
@@ -25,12 +28,12 @@ blog and a *presentation* template with default slide styles.
     $ appa new TEMPLATE --name DOCUMENT_NAME
 ```
 
-> Creates a new folder based on the chosen template, e.g. `blank/presentation/science/invoice` and a `makefile`.
+Creates a new folder based on the chosen template, e.g. `blank/presentation/science/invoice` and a `makefile`.
 
 ```bash
     $ appa open [filename]
 ```
-> Opens an existing `.tex` document in Vim, open a pdf and runs an instance of `latexmk` live viewing of doc edits.
+Opens an existing `.tex` document in Vim, open a pdf and runs an instance of `latexmk` live viewing of doc edits.
 
 ### Compiling your `.tex` file
 
